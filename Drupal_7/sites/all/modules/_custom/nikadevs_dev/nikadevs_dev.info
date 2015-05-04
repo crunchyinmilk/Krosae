@@ -1,0 +1,6 @@
+; $Id: 
+name = NikaDevs Development
+description = Functions for releasing themes
+package = "NikaDevs"
+version = "7.x - 0.1"
+core = 7.x

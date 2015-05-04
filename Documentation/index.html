@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rhythm Documentation</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="js/google-code-prettify/prettify.css">
+  <link rel="stylesheet" href="css/custom.css"/>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.scrollTo.min.js"></script>
+  <script src="js/google-code-prettify/prettify.js"></script> 
+  <script src="js/global.js"></script>
+</head>
+
+<body data-target = ".navbar-spy" data-spy = "scroll" data-offset = "100">
+
+<div class = "navbar-spy left-sidebar">
+  <ul class="nav">
+    <li>
+      <strong>Installation</strong>
+      <ul>
+        <li><a href="#full_install">Full Drupal Install</a></li>
+        <li>
+          <a href="#existing_install">Installation For Existing Sites</a>
+        </li>
+        <li>
+          <ul>
+            <li><a href="#import_content">Import Content</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <strong>Site Configure</strong>
+      <ul>
+        <li><a href="#sub_theme">Rhythm Sub Theme</a></li>
+        <li><a href="#management_page">Management Pages</a></li>
+        <li><a href="#site_content">Site Content</a></li>
+        <li><a href="#shortcodes">Shortcodes</a></li>
+        <li><a href="#visual_shortcodes">Visual Shortcodes</a></li>
+        <li><a href="#layout_builder">Layout Builder</a></li>
+        <li><a href="#block_settings">Block Settings</a></li>
+        <li><a href="#updating_process">Updating process</a></li>
+        <li><a href="#changelog">Changelog</a></li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+<div class="right-sidebar">
+  <div class="row-fluid">
+  	<div class="span12">
+  		<div class="well">
+  			<h2>
+  				Overview</h2>
+  			<p>Rhythm is a clean, multi-purpose and responsive template. It is suitable for your corporate business sites, a creative agency or a portfolio projects.</p>
+  			<p>&nbsp;</p>
+  			<p>Updated: 17/08/2014<br />
+  				Author: <a href="http://Rhythm.nikadevs.com" target="_blank">NikaDevs</a></p>
+  			<p>Drupal 7.x</p>
+  			<p>Rhythm - is a multipurpose Drupal theme. It's fully responsive, has moduled structure. You will define what you want to use on your website. Our goal is to save time for our customers, we will work hard providing support, and making our theme better and better in future.</p>
+  			<p>Images showed on the theme is <b>only</b> for demonstration.</p>
+  		</div>
+  	</div>
+  </div>
+  
+  <div class="row-fluid">
+  	<div class="span12">
+  		<div class="well">
+  			<h2 id="full_install">
+  				Full Drupal Install with demo content</h2>
+  			<p>This instruction are for people that have experience manually installing Drupal and importing databases. If you do not feel comfortable performing these steps yourself, contact your server administrator for help. <strong>WARNING</strong> Do not import the provided SQL file into an existing Drupal database or you will lose all existing data.</p>
+  			<p>Full Drupal installation comes without images, which was only for theme demonstration.</p>
+  			<p>After purchasing theme, you will get a download package. Extract the archive somewhere on your computer.</p>
+        <p>Click here to watch the <a href="https://www.youtube.com/watch?v=_aeCpWxmb7I">VIDEO INSTRUCTION OF INSTALLATION PROCESS</a> or watch it below: <br/></p>
+        <iframe width="1280" height="720" src="https://www.youtube.com/embed/_aeCpWxmb7I" frameborder="0" allowfullscreen></iframe> <br/>
+  			<ol>
+  				<li>
+  					Create a database for this installation of Drupal and import the SQL file <code>Rhythm_database.sql</code>. The <a href = "http://www.phpmyadmin.net/home_page/downloads.php" target="_blank">PhpMyAdmin</a> might be helpfull for managing your databases. If importing the <code>Rhythm_database.sql</code> file was unsuccessfull, please try to import the <code>Rhythm_database_v2.sql</code></li>
+  				<li>
+  					Copy the entire contents of the <code>Drupal_7</code> folder to the location on your web server where you want your site to be accessed. If you want your primary domain to point to your install of Rhythm, copy everything to the root folder. If you want your site to be accessed as a subsection of your domain (for example: yourdomain.com/drupal) then simply rename the <code>Drupal_7</code> folder to the desired name and upload to the root of your server.</li>
+  				<li>
+  					This instruction <a href="https://drupal.org/documentation/install/settings-file" target="_blank">instruction</a> might be helpful for configuring the <code>/sites/default/default.settings.php</code> which should be renamed to <code>settings.php</code><br>
+            Please find line 214, and fill out the settings array with your database details.
+            <p><img src="images/settings-help.png" /></p></li>
+  				<li>
+  					Login to your site with the username <strong>Admin</strong> and the password <strong>Admin</strong> and visit <b>admin/people</b> to change the admin username and password.</li>
+  				<li>
+  					Go through the Drupal configuration found in <b>admin/config</b> options and update all the necessary information to reflect your website. Also be sure to visit <b>/admin/config/media/file-system</b> and update the Files Directories.</li>
+  			</ol>
+  		</div>
+  	</div>
+  </div>
+  
+  <div class="row-fluid">
+  	<div class="span12">
+  		<div class="well">
+  			<h2 id="existing_install">
+  				Installation for existing sites</h2>
+  			<p>Extract the downloaded theme archive somewhere on your computer.</p>
+  			<p>Folders <b>modules</b> contain all described below modules.</p>
+  			<p>&nbsp;</p>
+  			<p>The list of <b>required</b> modules:</p>
+        <ol>
+          <li>
+            <b><a href = "https://drupal.org/project/ctools" target = "_blank">ctools</a></b> - Chaos tools (required by many modules).</li>
+          <li>
+            <b><a href = "https://drupal.org/project/link" target = "_blank">link</a></b> - Link CCK fields.</li>
+          <li>
+            <b><a href = "https://drupal.org/project/shortcode" target = "_blank">shortcode</a></b> - Shortcode integration.</li>
+          <li>
+            <b><a href = "https://drupal.org/project/token" target = "_blank">token</a></b> - Token module (required by Pathauto).</li>
+          <li>
+            <b><a href = "https://drupal.org/project/views" target = "_blank">views</a></b> - Views module.</li>            
+          <li>
+            <b><a href = "https://drupal.org/project/media" target = "_blank">media</a></b> - Media widget for Image field.</li>
+          <li>
+            <b><a href = "https://drupal.org/project/date" target = "_blank">date</a></b> - Date field for nodes.</li>
+          <li>
+            <b><a href = "https://drupal.org/project/file_entity" target = "_blank">file_entity</a></b> - File Entity is required by Media module.</li>
+          <li>
+            <b><a href = "https://drupal.org/project/jquery_update" target = "_blank">jquery_update</a></b> - jQuery Update.</li>
+          <li>
+            <b><a href = "https://drupal.org/project/shortcode" target = "_blank">shortcode</a></b> - Dynamic Properties.</li>
+          <li>
+            <b>rhythm_cms</b> - Rhythm theme module.</li>
+          <li>
+            <b>rhythm_shortcodes</b> - Rhythm Shortcodes (inside rhythm_cms module).</li>
+          <li>
+            <b>nikadevs_cms</b> - NikaDevs Main Functions.</li>
+          <li>
+            <b>nd_visualshortcodes</b> - NikaDevs Visual Shortcodes (inside nikadevs_cms module).</li>
+        </ol>
+  			<p>&nbsp;</p>
+  			<p>The list of <b>optional</b> modules which are integrated in this theme:</p>
+  			<ol>
+          <li>
+            <b><a href = "https://drupal.org/project/commerce" target = "_blank">commerce</a></b> - Drupal Commerce</li>
+          <li>
+            <b><a href = "https://drupal.org/project/addressfield" target = "_blank">addressfield</a></b> - Address Field (required by Drupal Commerce)</li>
+          <li>
+            <b><a href = "https://drupal.org/project/fivestar" target = "_blank">fivestar</a></b> - Five Star (required by Drupal Commerce product)</li>
+          <li>
+            <b><a href = "https://drupal.org/project/votingapi" target = "_blank">votingapi</a></b> - Voting API (required by Five Star)</li>
+          <li>
+            <b><a href = "https://drupal.org/project/properties" target = "_blank">properties</a></b> - Provides a dynamic property field (required by Drupal Commerce product)</li>
+  				<li>
+  					<b><a href = "https://drupal.org/project/admin_menu" target = "_blank">admin_menu</a></b> - Usefull administrion menu</li>
+          <li>
+            <b><a href = "https://drupal.org/project/pathauto" target = "_blank">pathauto</a></b> - Pathauto (SEO friendly URLs).</li>
+          <li>
+            <b><a href = "https://drupal.org/project/retina_images" target = "_blank">retina_images</a></b> - Retina Images, high resolution images for retina displays</li>
+          <li>
+            <b><a href = "https://drupal.org/project/ckeditor" target = "_blank">ckeditor</a></b> - CKEditor is a WYSIWYG editor.</li>
+          <li>
+            <b><a href = "https://drupal.org/project/libraries" target = "_blank">libraries</a></b> - Libraries (required by CKEditor).</li>
+          <li>
+            <b><a href = "https://drupal.org/project/tb_megamenu" target = "_blank">tb_megamenu</a></b> - Mega Menu.</li>
+  			</ol>
+        <p>&nbsp;</p>
+        <p>The list of <b>core</b> modules which are used:</p>
+        <ol>
+          <li>
+            <b>block</b> - Block</li>
+          <li>
+            <b>comment</b> - Comments</li>
+          <li>
+            <b>search</b> - Search Form</li>
+        </ol>        
+        <p>&nbsp;</p>
+        <p>The list of modules for importing content:</p>
+        <ol>
+          <li>
+            <b><a href = "https://drupal.org/project/features" target = "_blank">features</a></b> - Features (Importing Rhythm theme features).</li>
+          <li>
+            <b><a href = "https://drupal.org/project/blockexport">blockexport</a></b> - Block Export Feature</li>
+          <li>
+            <b><a href = "https://drupal.org/project/node_export">node_export</a></b> - Node Export Feature</li>
+          <li>
+            <b><a href = "https://drupal.org/project/uuid">uuid</a></b> - UUID required for Node Export</li>
+        </ol>   
+  			<h4>
+  				Upload files:</h4>
+  			<ol>
+  				<li>
+  					Upload from <code>theme_only</code> folder <code>Rhythm</code> to your site folder in <code>/sites/all/themes</code></li>
+  				<li>
+  					Upload from <b>modules</b> all required modules to your site in <b>/sites/all/modules</b> folder.</li>
+          <li>
+            Upload from <b>libraries</b> all libraries to your site in <b>/sites/all/libraries</b> folder.</li>
+  			</ol>
+        <p>Go to the Modules page <b>admin/modules</b> and enable all required modules described above.</p>
+        <p>Please make sure what you are have enabled next modules before enabling the theme:
+        <ul>
+          <li>
+            Rhythm theme module.</li>
+          <li>
+            Rhythm Shortcodes.</li>
+          <li>
+            Rhythm Features.</li>
+          <li>
+            NikaDevs Visual Shortcodes.</li>
+          <li>
+            NikaDevs Main Features.</li>
+        </ul>
+  			<p>Login to your Drupal site and go to <b>admin/appearance</b> enable the <b>Rhythm Sub Theme</b> theme and set it as the default theme.</p>
+        <p>Go to jQuery Update page <b>admin/config/development/jquery_update</b> and set the Default jQuery Version to 1.7.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="row-fluid">
+    <div class="span12">
+      <div class="well">
+        <h2 id="import_content">
+          Import Content</h2>
+          <ol>
+            <li><p>Make sure what all required modules are enabled: <a href = "https://drupal.org/project/features">features</a>, <a href = "https://drupal.org/project/block_export">block_export</a>, <a href = "https://drupal.org/project/node_export">node_export</a></b> and <a href = "https://drupal.org/project/uuid">uuid</a>.</p></li>
+            <li><p>Open Modules page: <b>admin/modules</b> and enable the <b>Rhythm Content</b>, <b>Rhythm Block</b> and if you need commerce <b>Rhythm Commerce</b> module. You can also enable this Features from the Features page: <b>admin/structure/features</b></p></li>
+            <li>If for some reason there is still no Rhythm content, go on the Features page: <b>admin/structure/features</b>, disable the <b>Rhythm Content</b> feature in the <b>NikaDevs</b> section. After this simply enable it. If content still doesn't appear, click on the "Overridden" link, on the opened page select the checkboxes in the right side and click button "Restore". </li>
+          </ol>
+      </div>
+    </div>
+  </div>
+
+  <div class="row-fluid">
+    <div class="span12">
+      <div class="well">
+        <h2 id="sub_theme">Rhythm Sub Theme </h2>
+  			<p>Rhythm comes with a sub-theme called <b>Rhythm Sub Theme</b> that you can use to make customizations to the style and template structure of the parent theme without having to modify the parent theme itself. This is very useful then you will update the Rhythm theme as we release updates.</p>
+  			<p>There is an empty stylesheet in <code>sites/all/themes/Rhythm/Rhythm_sub/css/__custom.css</code>. Rename this file to <code>custom.css</code> and add your custom code on this file.</p>
+        <p> You can also copy any template file from the <code>sites/all/themes/Rhythm/templates</code> folder into the <code>sites/all/themes/Rhythm/Rhythm_sub/templates</code> folder and drupal will use <strong>Custom theme</strong> template.</p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row-fluid">
+  	<div class="span12">
+  		<div class="well">
+  			<h2 id="management_page">Management Pages</h2>
+  			<p>Rhythm theme comes with a management pages for each node type, where you can add/edit/delete nodes.</p>
+  			<p>You could enable <a href="https://drupal.org/project/admin_menu" target="_blank"><b>Admin menu</b></a> module to get a fast access to these pages:</p>
+  			<p><img src="images/management-pages.png" /></p>
+        <p>On each page will be showed list of added nodes of this type, with links to edit them:</p>
+        <p><img src="images/management-pages-example.png" /></p>
+  		</div>
+  	</div>
+  </div>
+ 
+  <div class="row-fluid">
+    <div class="span12">
+      <div class="well">
+        <h2 id="site_content">Site Content</h2>
+          <p>Most of the site features stored in the blocks, so you can easily build your page using <a href = "#layout_builder">Layout Builder</a> or <a href = "#visual_shortcodes">Visual Shortcodes</a></p>
+          <p>But also there is a pages with dynamical content, which you can edit in <a href="#management_pages">Management Pages</a>.</p>
+          <p>They are controled by Views, so you can found and edit them on the Views Page: <b>admin/structure/views</b></p>
+          <p><img src="images/views-overview.png" /></p>
+          <p>For example you want to create a new Gallery page with 3 Columns, and link to this page in Menu:</p>
+          <ol>
+            <li>Go to <b>Main Menu</b> settings page: <b>admin/structure/menu/manage/main-menu</b></li>
+            <li>Click on the <b>Add Link</b> button:<p><img src="images/Main Menu Add Link.png" /></p></li>
+            <li>Enter title <b>Gallery</b> and URL: <b>gallery-3-column</b>. Other settings leave by default. Click <b>Save</b>.<br>
+            The URL you can take from the View edit page: <img src = "images/gallery-3-col.png"/></li>
+            <li>On the redirected <b>Main Menu</b> settings page, drag your item there you need and click <b>Save Configuration</b>.</li>
+            <li>Now your item appears in the Header menu, and showed Gallery Items in 3 columns.</li>
+          </ol>
+          <p>&nbsp;</p>
+          <p>If you want to change URL to another, for example <b>gallery</b>:</p>
+          <ol>
+            <li>Go to Gallery 3 Cols settings page: <b>admin/structure/views/view/gallery/edit/page_2</b></li>
+            <li>Click on the <b>Path</b> link under <b>Page Settings</b>:<p><img src="images/views-change-url.png" /></p></li>
+            <li>Enter <b>gallery</b> in the textfield and click <b>Apply</b>.</li>
+            <li>Now save settings by clicking the <b>Save</b> on the top right corner of the page.</li>
+            <li>If you are already created menu link for this page, then use <b>Edit</b> link in front of the <b>Porfolio</b> menu link on the <b>Main Menu</b> settings page, to change URL to new <b>Gallery</b>.</li>
+            <li>Please note what if you are showing some specific blocks or using layout of <b>Layout Builder</b> for this page, then you need to edit their <b>Show on pages</b> fields.</li>
+          </ol>
+      </div>
+    </div>
+  </div>  
+
+  <div class="row-fluid">
+  	<div class="span12">
+  		<div class="well">
+  			<h2 id="shortcodes">
+  				Shortcodes</h2>
+        <p>Shortcodes are actually macros to be used in the text of contents. These macros change the text of the content and format the given part through the theme engine. Using them you can easy create complex elements such Accordion, Tabs, Quotes and others.</p>
+        <p>Then you edit textarea, select <b>Text format</b> to <b>Shortcodes</b> or <b>Dynamic Shortcodes</b></p>
+        <p>You can manually add/edit any shortcode for each <b>Text Format</b> on it's configure page <b>admin/config/content/formats</b>.</p>
+        <p>The cache disabled for <b>Dynamic Shortcodes</b> text format, so you can use View, Node, Block, Contact and other shortcodes with dynamical content.</p>
+  			<p><img src="images/shortcodes.png" /></p>
+  		</div>
+  	</div>
+  </div>
+
+  <div class="row-fluid">
+    <div class="span12">
+      <div class="well">
+        <h2 id="visual_shortcodes">
+          Visual Shortcodes</h2>
+        <p>This theme comes with amazing Visual Shortcodes module which allow you to add/edit/delete shortcodes without typing the code.</p>
+        <p>Before using this module open the settings page and configure it as you wish: <b>admin/config/content/nd_visualshortcodes</b></p>
+        <ol>
+          <li>Autostart Visual Shortcodes editor - Visual Shortcodes will be automaticaly loaded and ready to work once the page will be loaded, so you don't need to click on the "Enable Visual Shortcodes" link.</li>
+          <li>Confirm to delete shortcode - Will show up the confirmation window each time then you deleting any shortcode.</li>
+          <li>Enable for next Text Formats - Visual Shortcodes will appears only for this formats.</li>
+          <li>Default HTML tag Format - Configure which format will be used for HTML shortcode. By Default this is CKeditor format, which is configured to work with CKeditor, but you may install any other WYSIWYG editor.</li>
+        </ol>
+        <p>Short description of main options: </p>
+        <p><img src="images/shortcodes-overview.png" /></p>
+        <p><br></p>
+        <p>To add new shortcode click on the add shortcode icon, and will be loaded window with all allowed shortcodes. You can also type shortcode name in the search field and all not related shortcodes will disappers. Click on the required shortcode and on the "Add" button:</p>
+        <p><img src="images/shortcode-add.png" /></p>
+        <p><br></p>
+        <p>Shortcode edit sections which appears then you clicked on the edit shortcode icon: </p>
+        <p><img src="images/shortcode-edit.png" /></p>
+        <ol>
+          <li>Shortcode - Showed individual shortcode settings if they are exists.</li>
+          <li>Paddings - Edit shortcode container paddings.</li>
+          <li>Margins - Edit shortcode container margins.</li>
+          <li>Classes &amp; Animation - Here you can add extra classes, setup text align, block animation and block animaton delay.</li>
+          <li>Border - Allow to setup border and border radius.</li>
+          <li>Background - Allow to setup background color or background image.</li>
+        </ol>
+        <p>Some shortcodes should be used in combination, so if you clicked to add shortcode inside those shortcodes, by default you will see shortcode which should be inserted:</p>
+        <ol>
+          <li>Accordion container - Accordion Item</li>
+          <li>Pricing Table - Pricing Table Row</li>
+          <li>Row for columns - Column</li>
+          <li>Slider container - Slider</li>
+          <li>Tabs container - Tab</li>
+        </ol>
+        <p>By default the View, Block, Node, Quick Links, Contact Form shortcodes enabled only for Dynamic Shortcodes format. So you will not see them if selected "Shortcodes" format - because this is static and cached format.</p>
+        <p>For enabling "Dynamic Shortcodes" format click on the "Disable VisualShortcodes" link and you will see textarea with "Text Format" selectbox. Select the "Dynamic Shortcodes" and click on "Enable Visual Shortcodes". Now you are able to use all dynamic shortcodes.</p>
+        <p></p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row-fluid">
+  	<div class="span12">
+  		<div class="well">
+  			<h2 id="layout_builder">
+  				Layout Builder</h2>
+          <p>You can find Layout Builder on the Theme Setting page:<br>
+          <img src="images/layout-builder-main.png" /></p>
+          <p>The video overview of main functions: <a href="http://youtu.be/Sh8b7Ofwwls">YouTube</a></p>
+  			  <p>
+  				  The Layout Builder allow you to create any structure for any page, using Drag and Drop elements.<br>
+            You can configure default layout and layout for some specific page or pages.</br>
+            Each layout have name and <b>Show on Pages</b> field, there you can enter any URLs there is this layout will be used.</br></br>
+          <img src="images/Layout Builder Layout Settings.png" /></p>
+          <p>
+            Layout have 3 type of elements:
+            <ol>
+              <li>
+                <p><strong>Row</strong> - used for combining elements, also by default they styled in the theme with standart theme spacing.<br/>
+                <img src="images/Layout Builder Row.png" /></p>
+                <p>You can assign extra classes for styling, setup Paddings, change Tag type or disable it, and set this row as Full Width.</p>
+                <p>If <strong>User row from Default Layout</strong> option selected, then LayoutBuilder will search in the <b>Default</b> Layout the Row with the same name and will use it settings and regions. This may be helpfull if you want to use the same Row in many pages, for example <b>Footer</b>.</p>
+              </li>
+              <li>
+                <p><strong>Regions</strong> - Theme regions, which can have a many blocks inside. Think about this like about grouping required blocks inside, or showing blocks which are the same on the all pages.<br>
+                To configure regions blocks visit default block settings page: <strong>admin/structure/block</strong><br/>
+                <img src="images/Layout Builder Region.png" /></p>
+                <p>Region supports responsibility, and there is all list of options to configure how many columns it will take on any device, and if it will be showed/hidden.<br>
+                You can assign extra classes for styling, change Tag type or disable it, and select Animation with Delay of the animation.</p>
+              </li>
+              <li>
+                <p><strong>Blocks</strong> - Drupal available blocks. Use this then you need to show only one block, and not the whole Region.<br>
+                Block have the same settings which have Region.<br>
+                If you want to remove block - simply put it in the <strong>Hidden</strong> row and on the next page load it will be removed.</p>
+              </li>
+            </ol>
+  		</div>
+  	</div>
+  </div>
+
+  <div class="row-fluid">
+    <div class="span12">
+      <div class="well">
+        <h2 id="block_settings">
+          Block settings</h2>
+        <p>
+          You can add extra settings for any available in the system block: <strong>admin/structure/block</strong>.<br>
+          This is usefull then you showing many blocks inside one Region.
+          You can assign extra classes for styling, change Tag type or disable it, and select Animation with Delay of the animation.</br>
+          <img src="images/Block Settings.png" /></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="row-fluid">
+    <div class="span12">
+      <div class="well">
+        <h2 id="retina_images">
+          Retina Images</h2>
+        <ul>
+          <li>Make sure what module <b>Retina Images</b> is enabled.</li>
+          <li>Go to Image Styles page: admin/config/media/image-styles</li>
+          <li>Here you can enable Retina support for required image styles.</li>
+          <li>Click the <b>edit</b> link on required style, on the opened page click on the <b>edit</b> link in front of the first effect.</li>
+          <li>Select checkbox <b>Retinafy</b> and cllick <b>Update effect</b></li>
+          <li>If you are using Retina effect for all images it's recommended to setup JPEG quality to 35 in Image ToolKit page: <b>admin/config/media/image-toolkit</b> This will reduce the image size.</li>
+        </ul>
+        <p>This module will control all images which are uploaded under fields by Drupal forms. If you are uploaded image by FTP or WYSIWYG, and using it, for example, in some page body, then you need to upload in the same directory the high-resolution image with suffix @2x and select <b>Enable Retina Script</b> option on the Theme Setting page, in the <b>Main settings</b>section.</p>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row-fluid">
+    <div class="span12">
+      <div class="well">
+        <h2 id="updating_process">
+          Updating Process</h2>
+          <p>Please be carefull when updating your Rhythm theme and modules to newest version, and <strong>always</strong> made Backups of code and database. Use this short instruction:</p>
+          <p>After copying new files you need to clear the Drupal cache: <b>admin/config/development/performance</b>.</p>
+          <p>Go to <a href="#changelog">Changelog</a> section, if there is announced changes by <b>Features</b>, then you need:</p>
+          <ol>
+            <li>Enable the module <b>Features</b> if it's not enabled.</li>
+            <li>Go to main Features page: <b>admin/structure/features</b></li>
+            <li>Click on the <b>NikaDevs</b> section, select <b>Rhythm Features</b> feature and click <b>Save Changes</b></li>
+            <li>Sometimes there is a changes in the nodetypes or views, in this case you will see <b>Needs review</b> in the STATE column.</li>
+            <li>Click on the <b>Rhythm Features</b> feature link. You will see a list of features with checkboxes. Select them all, or only which you need and click <b>Revert components</b>. Note what if you made some changes in this fields/views/image styles or other features, this operation will revert them.</li>
+          </ol>
+      </div>
+    </div>
+  </div>
+
+  <div class="row-fluid">
+    <div class="span12">
+      <div class="well">
+        <h2 id="changelog">
+          Changelog</h2>
+
+          <p><strong>Version 1.1</strong> - March 30, 2015</p>
+          <pre>Added: Toggle the Page Loader GIF Image
+          Added: W3C Validate
+          Updated: Different Categories for each node type
+          Updated: Visual Shortcodes now with LIVE preview function
+          Updated: Taxonomy pages
+          Fixed: Minor Bugs</pre>
+
+          <p><strong>Version 1.0</strong> - March 23, 2014</p>
+          <pre>Initial release</pre>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

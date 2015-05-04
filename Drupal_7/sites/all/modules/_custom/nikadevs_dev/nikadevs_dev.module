@@ -1,0 +1,84 @@
+<?php
+
+/**
+ * Implements hook_menu().
+ */
+function nikadevs_dev_menu() {
+  $items = array();
+  $items['admin/release'] = array(
+    'description' => '',
+    'access arguments' => array('administer content types'),
+    'page callback' => 'nikadevs_dev_release',
+    'type' => MENU_CALLBACK,
+  );
+  $items['admin/release/delete'] = array(
+    'description' => '',
+    'access arguments' => array('administer content types'),
+    'page callback' => 'nikadevs_dev_release_delete',
+    'type' => MENU_CALLBACK,
+  );
+
+
+  return $items;
+}
+
+function nikadevs_dev_release_delete() {
+  db_truncate('cache')->execute();
+  db_truncate('cache_admin_menu')->execute();
+  db_truncate('cache_block')->execute();
+  db_truncate('cache_bootstrap')->execute();
+  db_truncate('cache_field')->execute();
+  db_truncate('cache_filter')->execute();
+  db_truncate('cache_form')->execute();
+  db_truncate('cache_image')->execute();
+  db_truncate('cache_menu')->execute();
+  db_truncate('cache_page')->execute();
+  db_truncate('cache_path')->execute();
+  db_truncate('cache_token')->execute();
+  db_truncate('cache_update')->execute();
+  db_truncate('cache_views')->execute();
+  db_truncate('cache_views_data')->execute();
+  print 'DELETED';
+  exit();
+}
+
+function nikadevs_dev_release() {
+  // Update files directories
+  variable_set('file_public_path', 'sites/default/files');
+  variable_set('file_temporary_path', 'sites/default/files/tmp');
+  variable_del('site_mail', '');
+  variable_del('update_notify_emails', '');
+  variable_set('error_level', 0);
+
+
+  db_update('users')->fields(
+    array(
+      'name' => 'Admin',
+      'pass' => '$S$DuddJXP/pGSXJgCtWSYxSEvsG0pIqfPVTGt0OaJObxV2zb3YqTxG',
+      'mail' => 'admin@example.com',
+      'init' => 'admin@example.com'
+    ))
+    ->condition('uid', 1)->execute();
+
+  $res = db_select('file_managed', 'f')->fields('f')->execute();
+  $module_path = drupal_get_path('module', 'nikadevs_dev');
+  foreach($res as $row) {
+    if(strpos($row->uri, 'logo') !== FALSE || strpos($row->uri, 'user-avatar') !== FALSE) {
+      continue;
+    }
+    unlink(drupal_realpath($row->uri));
+    copy($module_path . '/img/upload_image.png', 'sites/default/files/upload_image_' . $row->fid . '.png');
+
+    db_update('file_managed')->fields(array(
+     'filename' => 'upload_image_' . $row->fid . '.png',
+      'uri' => 'public://upload_image_' . $row->fid . '.png',
+      'filemime' => 'image/png',
+     'filesize' => filesize($module_path . '/img/upload_image.png')
+   ))
+   ->condition('fid', $row->fid)
+   ->execute();
+
+  }
+
+  return 'Done';
+}

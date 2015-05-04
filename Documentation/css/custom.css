@@ -1,0 +1,63 @@
+.left-sidebar{
+  padding-top: 20px;
+  width: 240px;
+  position: fixed;
+  height: 100vh;
+  -webkit-box-shadow: 2px 0px 15px 0px rgba(50, 50, 50, 0.6);
+  -moz-box-shadow: 2px 0px 15px 0px rgba(50, 50, 50, 0.6);
+  box-shadow: 2px 0px 15px 0px rgba(50, 50, 50, 0.6);
+  overflow: auto;
+}
+.right-sidebar{
+  margin-left: 270px;
+  padding-right: 20px;
+  padding-bottom: 600px;
+  padding-top: 20px;
+}
+.right-sidebar img{
+  padding: 0;
+  border: 1px solid #000;
+  display: block;
+  margin: 10px auto;
+}
+.nav ul{
+  margin: 0;
+}
+.nav li{
+  text-align: center;
+  list-style: none;
+  padding: 10px 0;
+}
+.nav li.active{
+  background-color: #f5f5f5;
+}
+.nav strong{
+  padding-bottom: 15px;
+  display: inline-block;
+  font-size: 18px;
+  font-weight: normal;
+}
+.nav ul li{
+  text-align: left;
+  padding-left: 20px;
+  margin: 0 0 0 -5px;
+  border-bottom: 1px solid #e3e3e3;
+}
+.nav ul li:first-child{
+  border-top: 1px solid #e3e3e3; 
+}
+.nav ul ul{
+  margin: -11px 0 -10px 0;
+}
+.nav ul li ul li{
+  margin: 0 0 0 -15px;
+}
+.nav ul li ul li:last-child{
+  border-bottom: none;
+}
+.row-fluid{
+  margin-bottom: 40px;
+}
+ol.linenums li{
+  padding: 2px 5px 2px 12px;
+}
